@@ -8,6 +8,7 @@ const QrGenerator = () => {
   const [qr, setQr] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // Theme handling
   const toggleTheme = () => {
@@ -36,6 +37,38 @@ const QrGenerator = () => {
     }
   }, [text, color, size]);
 
+  // Download handler
+  const handleDownload = async () => {
+    if (!qr || isDownloading) return;
+    
+    try {
+      setIsDownloading(true);
+      const response = await fetch(qr);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      
+      // Create safe filename
+      const filename = `QRCode-${text.substring(0, 15).replace(/[^a-z0-9]/gi, '-')}-${Date.now()}.png`;
+      a.download = filename;
+      
+      document.body.appendChild(a);
+      a.click();
+      
+      // Cleanup
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Download failed:', error);
+      setIsValid(false);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
   return (
     <div className="container">
       <button 
@@ -57,10 +90,10 @@ const QrGenerator = () => {
           aria-label="QR code content input"
         />
         <button 
-          onClick={() => document.getElementById('download-btn')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => document.getElementById('download-section')?.scrollIntoView({ behavior: 'smooth' })}
           disabled={!isValid}
         >
-          Generate QR Code
+          {isValid ? 'Update QR Code' : 'Generate QR Code'}
         </button>
       </div>
 
@@ -91,22 +124,19 @@ const QrGenerator = () => {
       </div>
 
       {isValid && (
-        <div className="qr-result">
+        <div className="qr-result" id="download-section">
           <img 
             src={qr} 
             alt="Generated QR Code" 
             onError={() => setIsValid(false)}
           />
-          <a 
-            href={qr}
-            download={`QRCode-${text.substring(0, 15)}-${Date.now()}.png`}
-            id="download-btn"
-            className="download-link"
+          <button 
+            onClick={handleDownload}
+            className="download-button"
+            disabled={isDownloading}
           >
-            <button>
-              Download QR Code
-            </button>
-          </a>
+            {isDownloading ? 'Downloading...' : 'Download QR Code'}
+          </button>
         </div>
       )}
     </div>
