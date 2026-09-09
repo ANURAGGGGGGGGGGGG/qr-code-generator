@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/qr-code-generator/static/css/main.802a2bb3.css",
-    "main.js": "/qr-code-generator/static/js/main.941f71b8.js",
+    "main.css": "/qr-code-generator/static/css/main.955ae6b2.css",
+    "main.js": "/qr-code-generator/static/js/main.11b98e24.js",
     "index.html": "/qr-code-generator/index.html",
-    "main.802a2bb3.css.map": "/qr-code-generator/static/css/main.802a2bb3.css.map",
-    "main.941f71b8.js.map": "/qr-code-generator/static/js/main.941f71b8.js.map"
+    "main.955ae6b2.css.map": "/qr-code-generator/static/css/main.955ae6b2.css.map",
+    "main.11b98e24.js.map": "/qr-code-generator/static/js/main.11b98e24.js.map"
   },
   "entrypoints": [
-    "static/css/main.802a2bb3.css",
-    "static/js/main.941f71b8.js"
+    "static/css/main.955ae6b2.css",
+    "static/js/main.11b98e24.js"
   ]
 }
