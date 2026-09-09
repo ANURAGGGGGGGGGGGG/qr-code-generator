@@ -4,20 +4,12 @@
   "private": true,
   "homepage": "https://ANURAGGGGGGGGGGGG.github.io/qr-code-generator",
   "dependencies": {
-<<<<<<< HEAD
-    "@tailwindcss/postcss": "^4.3.3",
-=======
->>>>>>> 902adb240dabea6d95b40424ce75b1d02ca59047
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-    "tailwindcss": "^3.4.19",
-=======
->>>>>>> 902adb240dabea6d95b40424ce75b1d02ca59047
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,12 +39,6 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "autoprefixer": "^10.5.5",
-    "gh-pages": "^6.3.0",
-    "postcss": "^8.5.28"
-=======
     "gh-pages": "^6.3.0"
->>>>>>> 902adb240dabea6d95b40424ce75b1d02ca59047
   }
 }
